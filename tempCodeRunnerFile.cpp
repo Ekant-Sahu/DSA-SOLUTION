@@ -1,1 +1,1 @@
-cout<<lastcoin<<" ";
+cout<<n-a<<" ";
