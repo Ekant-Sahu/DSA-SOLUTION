@@ -1,1 +1,1 @@
-cout<<n-a<<" ";
+cout<<solve(x,price,page,n);
