@@ -8,34 +8,12 @@ using namespace std;
 
 const int N = 1000000;
 const int m = 1000000007;
-vector<bool> bought(false);
-int noPages = 0;
-int best = 0;
+
+
+
 
 
 //recersive implementation
-
-int solve(int x,vector<int> price,vector<int> page,int n){
-    if(x<=0){
-        return 0;
-    }
-    else{
-        for(int i = 0; i<n;i++){
-            if(!bought[i] && x-price[i]>=0){
-                bought[i] = true;
-                //cout<<price[i]<<" "<<x-price[i]<<endl;
-                noPages = noPages + page[i];
-                solve(x-price[i],price,page,n);
-                bought[i]=false;
-                best = max(noPages,best);
-                noPages=0;
-            }
-        }
-        return best;
-    }
-}
-
-
 
 
 
@@ -54,7 +32,19 @@ int main(){
     {
         cin>>page[i];
     }
-    cout<<solve(x,price,page,n);
+    vector<vector<int>> sol(n+1,vector<int>(x+1,0));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j <= x; j++)
+        {
+            sol[i+1][j] = sol[i][j];
+            if(j>=price[i]){
+                sol[i+1][j] = max(sol[i+1][j],page[i]+sol[i][j-price[i]]);
+            }
+        } 
+    }
+    cout<<sol[n][x];
+    
     
     return 0;
 }

@@ -1,1 +1,2 @@
-cout<<solve(x,price,page,n);
+turn 0;
+}
