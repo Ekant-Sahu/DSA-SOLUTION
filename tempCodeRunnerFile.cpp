@@ -1,2 +1,2 @@
-turn 0;
-}
+
+int main(){
