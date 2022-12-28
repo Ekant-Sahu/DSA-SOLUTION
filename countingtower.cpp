@@ -12,24 +12,35 @@ const int m = 1000000007;
 
 
 
-int ans = 0;
+
 //recersive implementation
-int solve(int n){
-    if(n==1){
-        return 2;
-    }
-    else{
-        ans = ans + 2*solve(n-1);
-    }
-    return ans;
-}
-
-
 
 int main(){
     //iterative implementaion
-    int n = 6;
-    cout<<solve(n);
-    return 0;
+    vector<vector<long long>> dp(N,vector<long long>(8,0));
+    for (int i = 0; i < 8; i++)
+    {
+        dp[0][i] = 1;
     }
+    for (int i = 1; i < N; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            if(j == 0 || j == 2 || j == 3 || j == 4 || j==5)
+                dp[i][j] = (dp[i-1][0]+dp[i-1][1] + dp[i-1][3] + dp[i-1][4] + dp[i-1][5])%m;
+            else{
+                dp[i][j] = (dp[i-1][2]+dp[i-1][6]+ dp[i-1][7])%m;
+            } 
+        }
+        
+    }
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        cout<<(dp[n-1][2] + dp[n-1][6])%m<<endl;
+    } 
+    return 0;
+}
     
