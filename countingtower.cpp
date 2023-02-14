@@ -8,11 +8,6 @@ using namespace std;
 
 const int N = 1000000;
 const int m = 1000000007;
-
-
-
-
-
 //recersive implementation
 
 int main(){
