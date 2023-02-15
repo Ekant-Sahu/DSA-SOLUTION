@@ -1,4 +1,4 @@
-for (int i = 0; i < m; i++)
+for (int i = 0; i < count; i++)
 // {
-//     cin>>lights[i];
+//     cout<<rooms[i]<<" ";
 // }
