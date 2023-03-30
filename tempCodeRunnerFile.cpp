@@ -1,6 +1,6 @@
 while (!cycle.empty())
-                {
-                    cout << cycle.front();
-                    cycle.pop();
-                }
-                return 0;
+{
+    cout << cycle.front();
+    cycle.pop();
+}
+return 0;
