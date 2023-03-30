@@ -1,15 +1,21 @@
 {
-    "files.associations": {
-        "iostream": "cpp",
-        "vector": "cpp",
-        "ostream": "cpp",
-        "iterator": "cpp",
-        "xmemory": "cpp",
-        "xutility": "cpp",
-        "utility": "cpp",
-        "system_error": "cpp",
-        "type_traits": "cpp",
-        "xlocnum": "cpp",
-        "xtr1common": "cpp"
-    }
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "iostream": "cpp",
+    "vector": "cpp",
+    "ostream": "cpp",
+    "iterator": "cpp",
+    "xmemory": "cpp",
+    "xutility": "cpp",
+    "utility": "cpp",
+    "system_error": "cpp",
+    "type_traits": "cpp",
+    "xlocnum": "cpp",
+    "xtr1common": "cpp",
+    "queue": "cpp",
+    "xstring": "cpp",
+    "typeinfo": "cpp",
+    "xlocale": "cpp",
+    "deque": "cpp"
+  }
 }

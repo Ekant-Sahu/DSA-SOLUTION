@@ -1,4 +1,6 @@
-for (int i = 0; i < m; i++)
-// {
-//     cin>>lights[i];
-// }
+while (!cycle.empty())
+                {
+                    cout << cycle.front();
+                    cycle.pop();
+                }
+                return 0;
