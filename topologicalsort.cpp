@@ -67,18 +67,18 @@ int main()
     {
         if (!visted[i])
         {
-            bool cyclefound = dfs(1);
+            bool cyclefound = dfs(i);
             if (cyclefound)
             {
                 cout << "YES" << endl;
                 while (!cycle.empty())
                 {
-                    cout << cycle.front() << " ";
+                    cout << cycle.front();
                     cycle.pop();
                 }
             }
-            return 0;
         }
     }
+    return 0;
     cout << "NO";
 }

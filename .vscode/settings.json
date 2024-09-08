@@ -16,6 +16,12 @@
     "xstring": "cpp",
     "typeinfo": "cpp",
     "xlocale": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "stack": "cpp",
+    "algorithm": "cpp",
+    "cmath": "cpp",
+    "set": "cpp",
+    "iosfwd": "cpp",
+    "unordered_map": "cpp"
   }
 }

@@ -106,7 +106,7 @@ int main()
 
     int n, m;
     cin >> n >> m;
-    graph g1;
+    graph g1, g2;
     for (int i = 0; i < m; i++)
     {
         int u, v;
