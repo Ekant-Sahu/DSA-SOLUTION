@@ -10,35 +10,53 @@ using namespace std;
 
 int main()
 {
-    int n, m, count = 0;
-    cin >> n >> m;
-    vector<int> pos(n);
-    vector<int> number(n);
-    for (int i = 0; i < n; i++)
+    int n, q;
+    cin >> n >> q;
+    vector<int> pos(n + 1);
+    vector<int> number(n + 1);
+    for (int i = 1; i <= n; i++)
     {
         cin >> number[i];
-        number[i]--;
         pos[number[i]] = i;
     }
-    for (int i = 0; i < n - 1; i++)
+    int answer = 1;
+    for (int i = 1; i < n; i++)
     {
-        if (pos[i] > pos[i + 1])
-            count++;
+        answer += (pos[i] > pos[i + 1]);
     }
-    count++;
-    int a, b;
-    // for (int i = 0; i < m; i++)
-    // {
-    //     cin >> a >> b;
-    //     if (number[a - 1] > number[b - 1])
-    //     {
-    //         count--;
-    //         cout << count << endl;
-    //     }
-    //     else
-    //     {
-    //         count++;
-    //         cout << count << endl;
-    //     }
-    // }
+    int l, r;
+    set<pair<int, int>> updatedPair;
+    while (q--)
+    {
+        cin >> l >> r;
+        if (number[l] + 1 <= n)
+        {
+            updatedPair.insert({number[l], number[l] + 1});
+        }
+        if (number[l] - 1 <= n)
+        {
+            updatedPair.insert({number[l] - 1, number[l]});
+        }
+        if (number[r] + 1 <= n)
+        {
+            updatedPair.insert({number[r], number[r] + 1});
+        }
+        if (number[r] - 1 <= n)
+        {
+            updatedPair.insert({number[r] - 1, number[r]});
+        }
+        for (auto swapped : updatedPair)
+        {
+            answer -= pos[swapped.first] > pos[swapped.second];
+        }
+        swap(number[l], number[r]);
+        pos[number[l]] = l;
+        pos[number[r]] = r;
+        for (auto swapped : updatedPair)
+        {
+            answer += pos[swapped.first] > pos[swapped.second];
+        }
+        cout << answer << endl;
+        updatedPair.clear();
+    }
 }
