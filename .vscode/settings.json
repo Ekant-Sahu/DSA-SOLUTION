@@ -23,6 +23,7 @@
     "set": "cpp",
     "iosfwd": "cpp",
     "unordered_map": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "xtree": "cpp"
   }
 }
