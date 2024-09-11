@@ -21,7 +21,7 @@ bool winner(vector<int> temp)
     {
         for (int i = 0; i < temp.size(); i++)
         {
-            temp[i] = temp[i] - temp.size() - 1 < 1 ? temp[i] - temp.size() - 1 : temp.pop();
+            temp[i] = temp[i] - temp.size() - 1 < 1 ? temp[i] - temp.size() - 1 : temp.pop_back();
         }
     }
 }
