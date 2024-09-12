@@ -26,6 +26,7 @@
     "list": "cpp",
     "xtree": "cpp",
     "initializer_list": "cpp",
-    "xhash": "cpp"
+    "xhash": "cpp",
+    "numeric": "cpp"
   }
 }
