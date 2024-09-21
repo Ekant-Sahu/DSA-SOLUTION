@@ -10,39 +10,67 @@ using namespace std;
 #include <typeinfo>
 #include <queue>
 #include <stack>
-vector<int> ar[200001];
-vector<bool> visted(200001);
-vector<int> next_node(200001);
-vector<int> dp(200001);
-int m = 1e9 + 7;
-int c = 0;
-
-void set_base(int n)
+const int m = 1e9 + 7;
+vector<int> indegree(2000001);
+vector<int> ar[2000001];
+vector<int> c(2000001);
+void addedge(int u, int v)
 {
-    for (int i = 0; i < n; i++)
+    ar[u].push_back(v);
+    indegree[v]++;
+}
+
+void topsort(int n)
+{
+    queue<int> q;
+    for (int i = 2; i <= n; i++)
     {
-        dp[i] = 0;
+        if (indegree[i] == 0)
+        {
+            q.push(i);
+        }
     }
-    dp[1] = 1;
+    while (!q.empty())
+    {
+        int top = q.front();
+        q.pop();
+        for (auto child : ar[top])
+        {
+            --indegree[child];
+            if (indegree[child] == 0 && child != 1)
+            {
+                q.push(child);
+            }
+        }
+    }
+    q.push(1);
+    c[1] = 1;
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+        for (auto v : ar[u])
+        {
+            --indegree[v];
+            c[v] = c[v] + c[u];
+            c[v] %= m;
+            if (!indegree[v])
+            {
+                q.push(v);
+            }
+        }
+    }
 }
 
 int main()
 {
     int n, m, u, v;
     cin >> n >> m;
-    for (int i = 1; i <= m; i++)
+    for (int i = 0; i < m; i++)
     {
         cin >> u >> v;
-        ar[u].push_back(v);
+        addedge(u, v);
     }
-    set_base(n);
-    for (int i = 1; i <= n; i++)
-    {
-        for (auto child : ar[i])
-        {
-            dp[child] = dp[child] + dp[i] + 1;
-        }
-    }
-
-    cout << dp[n] % m;
+    topsort(n);
+    cout << c[n];
 }

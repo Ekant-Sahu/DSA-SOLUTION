@@ -10,36 +10,41 @@ using namespace std;
 #include <numeric>
 #include <stack>
 
-int lengthOfLIS(vector<int> &nums)
+int lengthOfLIS(vector<long long> &nums, int n)
 {
-    int n = nums.size();
-    vector<int> sol(n, 0);
-    sol[0] = 0;
-
-    for (int i = 1; i < n; i++)
-    {
-        for (int j = 0; j < i + 1; j++)
-        {
-            if (nums[j] < nums[i])
-            {
-                sol[i] = max(sol[i], sol[j] + 1);
-            }
-        }
-    }
+    if (n == 0)
+        return 0;
+    vector<long long> sol;
 
     for (int i = 0; i < n; i++)
     {
-        cout << sol[i] << " ";
+        auto it = lower_bound(sol.begin(), sol.end(), nums[i]);
+        if (it == sol.end())
+        {
+            sol.push_back(nums[i]);
+        }
+        else
+        {
+            *it = nums[i];
+        }
     }
-    cout << endl;
-    // cout << sol[n - 1] + 1;
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << sol[i] << " ";
+    // }
+    // cout << endl;
+    return sol.size();
 }
 
 int main()
 {
-    vector<int> nums1 = {10, 9, 2, 5, 3, 7, 101, 18};
-    vector<int> nums2 = {1, 3, 6, 7, 9, 4, 10, 5, 6};
-
-    lengthOfLIS(nums1);
-    lengthOfLIS(nums2);
+    int n;
+    cin >> n;
+    vector<long long> nums(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> nums[i];
+    }
+    cout << lengthOfLIS(nums, n);
 }
